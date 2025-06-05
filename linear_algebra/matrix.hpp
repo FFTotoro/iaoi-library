@@ -35,10 +35,9 @@ namespace IAOI_lib{
       for(int i=c;i<m;i++)
         a[r][i]=1ll*a[r][i]*x%p;
       for(int i=0;i<n;i++)
-        if(i!=r&&a[i][c]){
+        if(i!=r&&a[i][c])
           for(int j=c,w=a[i][c];j<m;j++)
             self_add(a[i][j],p-1ll*w*a[r][j]%p);
-        }
       r++;
     }
     return r;
