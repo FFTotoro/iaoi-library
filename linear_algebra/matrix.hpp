@@ -43,43 +43,43 @@ namespace IAOI_lib{
     return r;
   }
   inline int det(vector<vector<int> > a,const int p){
-    auto add=[&](int x,int y){
-      int s=x+y; if(s>=p)s-=p; return s;
+    auto self_add=[&](int &x,int y){
+      if((x+=y)>=p)x-=p;
     };
-    int n=a.size(),s=1;
-    for(int i=0;i<n-1;i++){
-      if(!a[i][i])
-        for(int j=i+1;j<n;j++)
-          if(a[j][i]){swap(a[j],a[i]),s=s?p-s:0; break;}
-      if(!a[i][i])return 0;
-      for(int j=i+1;j<n;j++)
-        if(a[j][i]){
-          int d=1ll*a[i][i]*internal::pow_mod(a[j][i],p-2,p)%p;
-          s=1ll*s*internal::pow_mod(d,p-2,p)%p;
-          for(int k=0;k<n;k++)
-            a[j][k]=add(1ll*a[j][k]*d%p,p-a[i][k]);
-        }
+    int n=a.size(),dt=1;
+    for(int c=0;c<n;c++){
+      int s=-1;
+      for(int i=c;i<n;i++)
+        if(a[i][c]){s=i; break;}
+      if(s<0)return 0;
+      if(c!=s)swap(a[c],a[s]),dt=p-dt;
+      int x=internal::pow_mod(a[c][c],p-2,p);
+      dt=1ll*dt*a[c][c]%p;
+      for(int i=c;i<n;i++)
+        a[c][i]=1ll*a[c][i]*x%p;
+      for(int i=0;i<n;i++)
+        if(i!=c&&a[i][c])
+          for(int j=c,w=a[i][c];j<n;j++)
+            self_add(a[i][j],p-1ll*w*a[c][j]%p);
     }
-    for(int i=0;i<n;i++)
-      s=1ll*s*a[i][i]%p;
-    return s;
+    return dt;
   }
   inline int det_arbitrary_mod(vector<vector<int> > a,const int p){
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
-    int s=1;
-    for(int i=0;i<a.size();i++)
-      for(int j=i+1;j<a.size();j++){
+    int n=a.size(),s=1;
+    for(int i=0;i<n;i++)
+      for(int j=i+1;j<n;j++){
         while(a[i][i]){
           int d=a[j][i]/a[i][i];
-          for(int k=i;k<a.size();k++)
+          for(int k=i;k<n;k++)
             self_add(a[j][k],p-1ll*a[i][k]*d%p);
           swap(a[i],a[j]),s=p-s;
         }
         swap(a[i],a[j]),s=p-s;
       }
-    for(int i=0;i<a.size();i++)
+    for(int i=0;i<n;i++)
       s=1ll*s*a[i][i]%p;
     return s;
   }
