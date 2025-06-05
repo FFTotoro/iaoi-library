@@ -93,7 +93,6 @@ namespace IAOI_lib{
       copy(A[i].begin(),A[i].end(),a[i].begin()),a[i][m]=b[i];
     vector<int> mp(m,-1);
     for(int c=0,r=0;c<m&&r<n;c++){
-      mp[c]=-1;
       for(int i=r;i<n;i++)
         if(a[i][c]){mp[c]=i; break;}
       if(mp[c]<0)continue;
