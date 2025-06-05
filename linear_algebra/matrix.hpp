@@ -19,31 +19,25 @@ namespace IAOI_lib{
     return b;
   }
   inline int rank(vector<vector<int> > a,const int p){
-    auto add=[&](int x,int y){
-      int s=x+y; if(s>=p)s-=p; return s;
-    };
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
     if(a.empty()||a[0].empty())return 0;
     if(a.size()>a[0].size())a=trans(a);
-    int r=0;
-    for(int i=0;i<a.size();i++){
-      for(int j=i;j<a[0].size();j++)
-        if(a[i][j]){
-          if(i!=j){
-            for(int k=i;k<a.size();k++)
-              swap(a[k][i],a[k][j]);
-          }
-          break;
-        }
-      if(!a[i][i])continue;
-      int x=internal::pow_mod(a[i][i],p-2,p);
-      for(int j=i+1;j<a.size();j++)
-        if(a[j][i]){
-          int d=1ll*a[j][i]*x%p;
-          for(int k=i;k<a[0].size();k++)
-            self_add(a[j][k],p-1ll*a[i][k]*d%p);
+    int n=a.size(),m=a[0].size(),r=0;
+    for(int c=0;c<m&&r<n;c++){
+      int s=-1;
+      for(int i=r;i<n;i++)
+        if(a[i][c]){s=i; break;}
+      if(s<0)continue;
+      swap(a[r],a[s]);
+      int x=internal::pow_mod(a[r][c],p-2,p);
+      for(int i=c;i<m;i++)
+        a[r][i]=1ll*a[r][i]*x%p;
+      for(int i=0;i<n;i++)
+        if(i!=r&&a[i][c]){
+          for(int j=c,w=a[i][c];j<m;j++)
+            self_add(a[i][j],p-1ll*w*a[r][j]%p);
         }
       r++;
     }
@@ -109,7 +103,7 @@ namespace IAOI_lib{
       for(int i=c;i<=m;i++)
         a[r][i]=1ll*a[r][i]*x%p;
       for(int i=0;i<n;i++)
-        if(i!=mp[c]&&a[i][c])
+        if(i!=r&&a[i][c])
           for(int j=c,w=a[i][c];j<=m;j++)
             self_add(a[i][j],p-1ll*w*a[r][j]%p);
       r++;
