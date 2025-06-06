@@ -58,7 +58,7 @@ namespace IAOI_lib{
       for(int i=c;i<n;i++)
         a[c][i]=1ll*a[c][i]*x%p;
       for(int i=c+1;i<n;i++)
-        if(i!=c&&a[i][c])
+        if(a[i][c])
           for(int j=c,w=a[i][c];j<n;j++)
             self_add(a[i][j],p-1ll*w*a[c][j]%p);
     }
@@ -124,5 +124,36 @@ namespace IAOI_lib{
         bs.emplace_back(d);
       }
     return make_pair(c,bs);
+  }
+  inline int pfaffian(vector<vector<int> > a,const int p){
+    auto self_add=[&](int &x,int y){
+      if((x+=y)>=p)x-=p;
+    };
+    int n=a.size(),pf=1;
+    for(int c=0;c<n;c+=2){
+      int s=-1;
+      for(int i=c;i<n;i++)
+        if(a[i][c+1]){s=i; break;}
+      if(s<0)return 0;
+      if(c!=s){
+        swap(a[c],a[s]);
+        for(int i=0;i<n;i++)
+          swap(a[i][c],a[i][s]);
+        pf=p-pf;
+      }
+      int x=internal::pow_mod(a[c][c+1],p-2,p);
+      pf=1ll*pf*a[c][c+1]%p;
+      for(int i=c+1;i<n;i++)
+        a[c][i]=1ll*a[c][i]*x%p,a[i][c]=1ll*a[i][c]*x%p;
+      for(int j=c+2;j<n;j++)
+        if(a[c+1][j])
+          for(int i=c+1,w=a[c+1][j];i<n;i++)
+            self_add(a[i][j],1ll*w*a[i][c]%p);
+      for(int i=c+2;i<n;i++)
+        if(a[i][c+1])
+          for(int j=c+1,w=a[i][c+1];j<n;j++)
+            self_add(a[i][j],p-1ll*w*a[c][j]%p);
+    }
+    return pf;
   }
 }
