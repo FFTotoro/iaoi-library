@@ -68,20 +68,26 @@ namespace IAOI_lib{
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
-    int n=a.size(),s=1;
-    for(int i=0;i<n;i++)
-      for(int j=i+1;j<n;j++){
-        while(a[i][i]){
-          int d=a[j][i]/a[i][i];
-          for(int k=i;k<n;k++)
-            self_add(a[j][k],p-1ll*a[i][k]*d%p);
-          swap(a[i],a[j]),s=p-s;
+    int n=a.size(),dt=1;
+    for(int c=0;c<n;c++){
+      int s=-1;
+      for(int i=c;i<n;i++)
+        if(a[i][c]){s=i; break;}
+      if(s<0)return 0;
+      if(c!=s)swap(a[c],a[s]),dt=p-dt;
+      for(int i=c+1;i<n;i++){
+        while(a[c][c]){
+          int d=a[i][c]/a[c][c];
+          for(int j=c;j<n;j++)
+            self_add(a[i][j],p-1ll*a[c][j]*d%p);
+          swap(a[i],a[c]),dt=p-dt;
         }
-        swap(a[i],a[j]),s=p-s;
+        swap(a[i],a[c]),dt=p-dt;
       }
+    }
     for(int i=0;i<n;i++)
-      s=1ll*s*a[i][i]%p;
-    return s;
+      dt=1ll*dt*a[i][i]%p;
+    return dt;
   }
   pair<vector<int>,vector<vector<int> > > linear_equations(vector<vector<int> > A,vector<int> b,const int p){
     auto self_add=[&](int &x,int y){
