@@ -124,12 +124,11 @@ namespace IAOI_lib{
     return c;
   }
   inline int discrete_logarithm(int x,int y,int M){
-    typedef pair<int,int> pii;
     int b=sqrt(M),l=M/b+!!(M%b),r=M;
     vector<int> B(b+1),G(l+1);
     for(int i=B[0]=1;i<=b;i++)
       B[i]=1ll*B[i-1]*x%M;
-    __gnu_pbds::gp_hash_table<int,pii> t;
+    __gnu_pbds::gp_hash_table<int,pair<int,int> > t;
     for(int i=G[0]=1;i<=l;i++){
       G[i]=1ll*G[i-1]*B[b]%M;
       if(t.find(G[i])==t.end())t[G[i]].first=i;
