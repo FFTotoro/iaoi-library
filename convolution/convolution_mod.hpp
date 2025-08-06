@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 namespace IAOI_lib{
   typedef long long ll;
   typedef vector<int> poly;
@@ -8,7 +6,7 @@ namespace IAOI_lib{
     inline int add(int x,int y){
       int s=x+y; if(s>=p)s-=p; return s;
     }
-    inline void chadd(int &x,int y){
+    inline void self_add(int &x,int y){
       if((x+=y)>=p)x-=p;
     }
     inline int qpow(int a,int b){
@@ -33,7 +31,7 @@ namespace IAOI_lib{
         for(int j=0;j<l;j+=i)
           for(int k=j;k<j+(i>>1);k++){
             int x=a[k],y=(ll)q[k-j]*a[k+(i>>1)]%p;
-            chadd(a[k],y),a[k+(i>>1)]=add(x,p-y);
+            self_add(a[k],y),a[k+(i>>1)]=add(x,p-y);
           }
       }
       if(op<0){

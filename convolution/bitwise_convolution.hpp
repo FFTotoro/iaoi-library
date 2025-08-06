@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 namespace IAOI_lib{
   typedef long long ll;
   typedef vector<int> poly;
@@ -8,7 +6,7 @@ namespace IAOI_lib{
     inline int add(int x,int y){
       int s=x+y; if(s>=p)s-=p; return s;
     }
-    inline void chadd(int &x,int y){
+    inline void self_add(int &x,int y){
       if((x+=y)>=p)x-=p;
     }
     inline poly mul(poly a,poly b){
@@ -18,23 +16,23 @@ namespace IAOI_lib{
       return s;
     }
     inline poly and_fwt(int n,poly a,int x){
-      auto b=a; chadd(x,p);
+      auto b=a; self_add(x,p);
       for(int i=0;i<n;i++)
         for(int j=0;j<a.size();j+=1<<i+1)
           for(int k=0;k<1<<i;k++)
-            chadd(b[j|k],(ll)b[j|1<<i|k]*x%p);
+            self_add(b[j|k],(ll)b[j|1<<i|k]*x%p);
       return b;
     }
     inline poly or_fwt(int n,poly a,int x){
-      auto b=a; chadd(x,p);
+      auto b=a; self_add(x,p);
       for(int i=0;i<n;i++)
         for(int j=0;j<a.size();j+=1<<i+1)
           for(int k=0;k<1<<i;k++)
-            chadd(b[j|1<<i|k],(ll)b[j|k]*x%p);
+            self_add(b[j|1<<i|k],(ll)b[j|k]*x%p);
       return b;
     }
     inline poly xor_fwt(int n,poly a,int x){
-      auto b=a; chadd(x,p);
+      auto b=a; self_add(x,p);
       for(int i=0;i<n;i++)
         for(int j=0;j<a.size();j+=1<<i+1)
           for(int k=0;k<1<<i;k++){
