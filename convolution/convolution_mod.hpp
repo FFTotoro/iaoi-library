@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 namespace IAOI_lib{
   typedef long long ll;
   typedef vector<int> poly;
