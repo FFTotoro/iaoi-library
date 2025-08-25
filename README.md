@@ -132,16 +132,7 @@ UPD：增加了带权功能（即维护连通块大小）。
 - `int inv_p(int x,int M)` / `long long inv_pll(long long x,long long M)`：返回 $x(1\le x<mod)$ 在模 $M(1\le M\le 10^9)$（$M$ 是质数）意义下的逆元，时间复杂度 $O(\log M)$；
 - `pair<int,int> exgcd(int a,int b)` / `pair<long long,long long> exgcdll(long long a,long long b)`：返回关于 $x,y$ 的不定方程 $ax+by=1$ 的解 $(x,y)$，时间复杂度 $O(\log\max(a,b))$；
 - `int inv_cp(int x,int M)` / `long long inv_cpll(long long x,long long M)`：返回 $x(1\le x<M)$ 在模 $M(1\le M\le 10^9)$（$M$ 不一定是质数）意义下的逆元，如果 $x$ 没有逆元返回 $-1$，时间复杂度 $O(\log M)$；
-- `long long crt(vector<pair<long long,long long> > a)` / `long long crt_mod(vector<pair<long long,long long> > a,int M)`：返回满足 $\forall1\le i,j\le n\land i\ne j,m_i\perp m_j$ 的方程组
-  $$
-  \begin{cases}
-  x\equiv r_0\pmod {m_0}\\
-  x\equiv r_1\pmod {m_1}\\
-  \vdots\\
-  x\equiv r_{n-1}\pmod {m_{n-1}}\\
-  \end{cases}
-  $$
-  的最小非负整数解 $x$，时间复杂度 $O(n\log\max\{m_i\})$。可选择是否将 $x$ 对某个数 $M$ 取模；
+- `long long crt(vector<pair<long long,long long> > a)` / `long long crt_mod(vector<pair<long long,long long> > a,int M)`：返回满足 $\forall1\le i,j\le n\land i\ne j,m_i\perp m_j$ 的方程组 $x\equiv r_i\pmod {m_i}$ 的最小非负整数解 $x$，时间复杂度 $O(n\log\max\{m_i\})$。可选择是否将 $x$ 对某个数 $M$ 取模；
 - `long double lagrange(vector<pair<long long,long long> > a,long long k)`：通过其在若干个点上的值确定一个多项式 $f(x)$ 并求出 $f(k)$，时间复杂度 $O(n^2)$，这里 $n$ 是 $a$ 的大小，即给出的点的个数；
 - `int lagrange_mod(vector<pair<int,int> > a,int k,int M)`：同上，求出 $f(k)\bmod M$，时间复杂度 $O(n^2)$。
 - `int discrete_logarithm(int x,int y,int M)`：返回最小的非负整数 $k$ 满足 $x^k\equiv y\pmod M(1\le M\le 10^9,\ 0\le x,y<M)$，如果不存在这样的 $k$，返回 $-1$，时间复杂度 $O(\sqrt{M})$。
