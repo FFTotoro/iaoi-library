@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 namespace IAOI_lib{
-  class matching{
+  class general_matching{
     private:
       int n,c;
       vector<vector<int> > g;
@@ -9,7 +9,7 @@ namespace IAOI_lib{
       int leader(int x){
         return x==f[x]?x:f[x]=leader(f[x]);
       }
-      inline int lca(int u,int v){
+      int lca(int u,int v){
         c++,u=leader(u),v=leader(v);
         while(o[u]!=c){
           o[u]=c,u=leader(pr[p[u]]);
@@ -49,12 +49,12 @@ namespace IAOI_lib{
         return false;
       }
     public:
-      matching(int n_){
+      general_matching(int n_){
         c=0,g.resize(n=n_),p.resize(n+1,n);
         pr.resize(n+1),w.resize(n+1);
         o.resize(n+1),f.resize(n+1);
       }
-      inline void add_edge(int u,int v){
+      void add_edge(int u,int v){
         g[u].emplace_back(v);
         g[v].emplace_back(u);
       }

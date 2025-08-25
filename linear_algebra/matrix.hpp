@@ -94,7 +94,7 @@ namespace IAOI_lib{
       if((x+=y)>=p)x-=p;
     };
     int n=A.size(),m=A[0].size();
-    vector<vector<int> > a(n,vector<int>(m+1));
+    vector a(n,vector<int>(m+1));
     for(int i=0;i<n;i++)
       copy(A[i].begin(),A[i].end(),a[i].begin()),a[i][m]=b[i];
     vector<int> mp(m,-1);

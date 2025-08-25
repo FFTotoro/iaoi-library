@@ -1,28 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 namespace IAOI_lib{
-  template<typename T> class dsu{
+  class dsu{
     private:
-      vector<T> a;
-      vector<int> s;
+      vector<int> a,s;
     public:
-      dsu(int n=2e5){
-        a.resize(n),s.resize(n,1);
+      dsu(int n):a(n),s(n,1){
         iota(a.begin(),a.end(),0);
       }
-      T leader(T x){
+      int leader(int x){
         return a[x]==x?x:a[x]=leader(a[x]);
       }
-      inline int size(T x){
+      int size(int x){
         return s[leader(x)];
       }
-      inline void merge(T x,T y){
+      void merge(int x,int y){
         x=leader(x),y=leader(y);
         if(x==y)return;
         if(s[x]>s[y])swap(x,y);
         s[y]+=s[x],a[x]=y;
       }
-      inline bool same(T x,T y){
+      bool same(int x,int y){
         return leader(x)==leader(y);
       }
   };

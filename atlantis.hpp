@@ -22,7 +22,7 @@ namespace IAOI_lib{
         build(u<<1,l,m),build(u<<1|1,m+1,r);
         pushup(u);
       }
-      inline void pushup(int u){
+      void pushup(int u){
         if(C[u])S[u]=X[B[u].second+1]-X[B[u].first];
         else S[u]=S[u<<1]+S[u<<1|1];
       }

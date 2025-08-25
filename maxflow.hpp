@@ -1,10 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
 namespace IAOI_lib{
   template<typename C> class mf_graph{
     private:
       typedef pair<int,int> pii;
       int n;
       vector<vector<pii> > g;
-      inline void add(int u,int v,C w){
+      void add(int u,int v,C w){
         g[u].emplace_back(v,e.size());
         e.emplace_back(u,v,w,0);
       }
@@ -15,7 +17,7 @@ namespace IAOI_lib{
       };
       vector<edge> e;
       mf_graph(int n):n(n),g(n){}
-      inline void add_edge(int u,int v,C w){
+      void add_edge(int u,int v,C w){
         add(u,v,w),add(v,u,0);
       }
       edge get_edge(int x){return e[x<<1];}

@@ -12,7 +12,7 @@ namespace IAOI_lib{
         d.resize(n+m);
         a.resize(n+m,vector<int>(n+m,-1));
       }
-      inline int add_edge(int u,int v){
+      int add_edge(int u,int v){
         d[u]++,d[v]++;
         int c1=0,c2=0;
         while(~a[u][c1])c1++;
@@ -33,7 +33,7 @@ namespace IAOI_lib{
       vector<__gnu_pbds::gp_hash_table<int,int> > a;
     public:
       associative_bipar_edge_coloring(int n,int m):d(n+m),a(n+m){}
-      inline int add_edge(int u,int v){
+      int add_edge(int u,int v){
         d[u]++,d[v]++;
         int c1=0,c2=0;
         while(a[u].find(c1)!=a[u].end())c1++;

@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 namespace IAOI_lib{
   template<typename Cap,typename Cost> class mcf_graph{
     private:
@@ -5,7 +7,7 @@ namespace IAOI_lib{
       typedef pair<Cost,int> pci;
       int n;
       vector<vector<tpi> > g;
-      inline void add(int u,int v,Cap cap,Cost cost){
+      void add(int u,int v,Cap cap,Cost cost){
         g[u].emplace_back(v,cost,e.size());
         e.emplace_back(u,v,cap,0);
       }
@@ -16,7 +18,7 @@ namespace IAOI_lib{
       };
       vector<edge> e;
       mcf_graph(int n):n(n),g(n){}
-      inline void add_edge(int u,int v,Cap cap,Cost cost){
+      void add_edge(int u,int v,Cap cap,Cost cost){
         add(u,v,cap,cost),add(v,u,0,-cost);
       }
       edge get_edge(int x){return e[x<<1];}
