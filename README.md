@@ -25,8 +25,8 @@
 
 #### 功能介绍
 
-- `int read()` / `long long readll()`：从标准输入读取一个整数；
-- `int write()` / `long long writell()`：向标准输出写入一个整数。
+- `T read()`：从标准输入读取一个整数；
+- `T write()`：向标准输出写入一个整数。
 
 #### 示例代码
 
