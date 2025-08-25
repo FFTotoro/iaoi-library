@@ -164,13 +164,13 @@ UPD：增加了带权功能（即维护连通块大小）。
 
 ### 矩阵（Matrix）
 
-见目录下 `misc/matrix.hpp`。
+见目录下 `linear_algebra/matrix.hpp`。
 
 包含：矩阵转置（Transpose）、矩阵的秩（Rank）、行列式求值（Determinant）、线性方程组（System of Linear Equations）和普法夫型（Pfaffian）。
 
 ### 异或线性基（XOR Basis）
 
-见目录下 `misc/xor_basis.hpp`。
+见目录下 `linear_algebra/xor_basis.hpp`。
 
 ## 图论（Graph Theory）
 
