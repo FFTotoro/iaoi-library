@@ -56,7 +56,7 @@ UPD：增加了带权功能（即维护连通块大小）。
 
 #### 功能介绍
 
-- `sparse_table<T,op> s(vector<T> a)`：对于存储 `T` 类型的 $a$ 数组（`std::vector`）创建一个 ST 表，`op` 为你需要维护的操作（特别地，它需要满足**消去律** $\mathrm{op}(x,x)=x$；例如，$\gcd$、$\max$、$\mathrm{and}$ 等都满足消去律），时间复杂度 $O(n\log n)$，这里 $n(1\le n\le 10^7)$ 为 $a$ 的大小；
+- `sparse_table<T,op> s(vector<T> a)`：对于存储 `T` 类型的 $a$ 数组（`std::vector`）创建一个 ST 表，`op` 为你需要维护的操作（特别地，它需要满足**消去律** $\mathrm{op}(x,x)=x$；例如 $\mathrm{gcd}$ / $\max$ / $\mathrm{and}$ 等都满足消去律），时间复杂度 $O(n\log n)$，这里 $n(1\le n\le 10^7)$ 为 $a$ 的大小；
 - `T s.query(int l,int r)`：返回 $\mathrm{op}_{i=l}^r a_i$ 的值，时间复杂度 $O(1)$。
 
 #### 示例代码
@@ -129,9 +129,9 @@ UPD：增加了带权功能（即维护连通块大小）。
 - `vector<int> get_primes(int n)`：查找 $[2,n](2\le n\le 10^8)$ 以内的所有质数，并返回包含它们的一个数组（`std::vector`），时间复杂度 $O(n)$；
 - `long long safe_mulll(long long a,long long b,long long M)`：返回 $a\times b\bmod M(0\le a,b\le 10^{18},1\le M\le 10^{18})$ 的值，时间复杂度 $O(\log b)$；
 - `int pow_mod(int a,int b,int M)` / `long long pow_modll(long long a,long long n,long long M)`：返回 $a^b\bmod M(0\le a,b\le 10^{9},1\le M\le 10^{9})$ 的值，时间复杂度 $O(\log b)$；
-- `int inv_p(int x,int M)` / `long long inv_pll(long long x,long long M)`：返回 $x(1\le x<mod)$ 在模 $M(1\le M\le 10^9)$（$M$ 是质数）意义下的逆元，时间复杂度 $O(\log M)$；
+- `int inv_p(int x,int M)` / `long long inv_pll(long long x,long long M)`：返回 $x(1\le x<mod)$ 在模质数 $M(1\le M\le 10^9)$ 意义下的逆元，时间复杂度 $O(\log M)$；
 - `pair<int,int> exgcd(int a,int b)` / `pair<long long,long long> exgcdll(long long a,long long b)`：返回关于 $x,y$ 的不定方程 $ax+by=1$ 的解 $(x,y)$，时间复杂度 $O(\log\max(a,b))$；
-- `int inv_cp(int x,int M)` / `long long inv_cpll(long long x,long long M)`：返回 $x(1\le x<M)$ 在模 $M(1\le M\le 10^9)$（$M$ 不一定是质数）意义下的逆元，如果 $x$ 没有逆元返回 $-1$，时间复杂度 $O(\log M)$；
+- `int inv_cp(int x,int M)` / `long long inv_cpll(long long x,long long M)`：返回 $x(1\le x<M)$ 在模 $M(1\le M\le 10^9)$ 意义下的逆元，如果 $x$ 没有逆元返回 $-1$，时间复杂度 $O(\log M)$；
 - `long long crt(vector<pair<long long,long long> > a)` / `long long crt_mod(vector<pair<long long,long long> > a,int M)`：返回满足 $\forall1\le i,j\le n\land i\ne j,m_i\perp m_j$ 的方程组 $x\equiv r_i\pmod {m_i}$ 的最小非负整数解 $x$，时间复杂度 $O(n\log\max\{m_i\})$。可选择是否将 $x$ 对某个数 $M$ 取模；
 - `long double lagrange(vector<pair<long long,long long> > a,long long k)`：通过其在若干个点上的值确定一个多项式 $f(x)$ 并求出 $f(k)$，时间复杂度 $O(n^2)$，这里 $n$ 是 $a$ 的大小，即给出的点的个数；
 - `int lagrange_mod(vector<pair<int,int> > a,int k,int M)`：同上，求出 $f(k)\bmod M$，时间复杂度 $O(n^2)$。
