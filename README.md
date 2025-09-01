@@ -32,7 +32,7 @@
 
 [P9515「JOC-1A」签到题 by FFTotoro](https://www.luogu.com.cn/record/121487446)
 
-## 并查集（DSU）
+## 并查集（Disjoint Set Union）
 
 见目录下 `dsu.hpp`。
 
