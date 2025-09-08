@@ -43,10 +43,10 @@ namespace IAOI_lib{
     }
     return r;
   }
-  inline int inv_p(int x,int M){
+  int inv_p(int x,int M){
     return pow_mod(x,M-2,M);
   }
-  inline ll inv_pll(ll x,ll M){
+  ll inv_pll(ll x,ll M){
     return pow_modll(x,M-2,M);
   }
   pair<int,int> exgcd(int a,int b){
@@ -59,13 +59,13 @@ namespace IAOI_lib{
     auto [x,y]=exgcdll(b,a%b);
     return make_pair(y,x-a/b*y);
   }
-  inline int inv_cp(int x,int M){
+  int inv_cp(int x,int M){
     return gcd(x,M)>1?-1:(exgcd(x,M).st%M+M)%M;
   }
-  inline ll inv_cpll(ll x,ll M){
+  ll inv_cpll(ll x,ll M){
     return gcd(x,M)>1?-1:(exgcdll(x,M).st%M+M)%M;
   }
-  inline ll crt(vector<pair<ll,ll> > a){
+  ll crt(vector<pair<ll,ll> > a){
     ll p=1,s=0;
     for(auto [r,m]:a)p*=m;
     for(auto [r,m]:a){
@@ -74,7 +74,7 @@ namespace IAOI_lib{
     }
     return s;
   }
-  inline ll excrt(vector<pair<ll,ll> > e){
+  ll excrt(vector<pair<ll,ll> > e){
     auto [q,p]=e[0];
     for(int i=1;i<e.size();i++){
       auto [b,a]=e[i];
@@ -88,7 +88,7 @@ namespace IAOI_lib{
     }
     return q%p;
   }
-  inline long double lagrange(vector<pair<ll,ll> > a,ll k){
+  long double lagrange(vector<pair<ll,ll> > a,ll k){
     long double c=0;
     for(int i=0;i<a.size();i++){
       long double s1=a[i].nd;
@@ -98,7 +98,7 @@ namespace IAOI_lib{
     }
     return c;
   }
-  inline int lagrange_mod(vector<pair<int,int> > a,int k,int M){
+  int lagrange_mod(vector<pair<int,int> > a,int k,int M){
     int c=0;
     for(int i=0;i<a.size();i++){
       int s1=a[i].nd,s2=1;
@@ -109,7 +109,7 @@ namespace IAOI_lib{
     }
     return c;
   }
-  inline int discrete_logarithm(int x,int y,int M){
+  int discrete_logarithm(int x,int y,int M){
     int b=sqrt(M),l=M/b+!!(M%b),r=M;
     vector<int> B(b+1),G(l+1);
     for(int i=B[0]=1;i<=b;i++)
