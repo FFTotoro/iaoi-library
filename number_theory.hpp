@@ -19,27 +19,27 @@ namespace IAOI_lib{
     }
     return p;
   }
-  inline ll safe_mulll(ll a,ll b,ll M){
+  inline ll safe_mul(ll a,ll b,ll M){
     ll r=0;
     while(b){
       if(b&1)(r+=a)%=M;
-      (a<<=1)%=M; b>>=1;
+      (a<<=1)%=M,b>>=1;
     }
     return r;
   }
-  inline int pow_mod(int a,int b,int M){
+  inline int pow_mod(int a,ll b,int M){
     int r=1;
     while(b){
-      if(b&1)r=r%M*a%M;
-      a=a%M*a%M; b>>=1;
+      if(b&1)r=1ll*r%M*a%M;
+      a=1ll*a%M*a%M,b>>=1;
     }
     return r;
   }
   inline ll pow_modll(ll a,ll b,ll M){
     ll r=1;
     while(b){
-      if(b&1)r=r%M*a%M;
-      a=a%M*a%M; b>>=1;
+      if(b&1)r=(__int128)r%M*a%M;
+      a=(__int128)a%M*a%M,b>>=1;
     }
     return r;
   }
@@ -52,22 +52,18 @@ namespace IAOI_lib{
   pair<int,int> exgcd(int a,int b){
     if(!b)return make_pair(1,0);
     auto [x,y]=exgcd(b,a%b);
-    int t=x; x=y; y=t-a/b*y;
-    return make_pair(x,y);
+    return make_pair(y,x-a/b*y);
   }
   pair<ll,ll> exgcdll(ll a,ll b){
     if(!b)return make_pair(1,0);
     auto [x,y]=exgcdll(b,a%b);
-    ll t=x; x=y; y=t-a/b*y;
-    return make_pair(x,y);
+    return make_pair(y,x-a/b*y);
   }
   inline int inv_cp(int x,int M){
-    if(gcd(x,M)>1)return -1;
-    return (exgcd(x,M).st%M+M)%M;
+    return gcd(x,M)>1?-1:(exgcd(x,M).st%M+M)%M;
   }
   inline ll inv_cpll(ll x,ll M){
-    if(gcd(x,M)>1)return -1;
-    return (exgcdll(x,M).st%M+M)%M;
+    return gcd(x,M)>1?-1:(exgcdll(x,M).st%M+M)%M;
   }
   inline ll crt(vector<pair<ll,ll> > a){
     ll p=1,s=0;
@@ -91,16 +87,6 @@ namespace IAOI_lib{
       p=m;
     }
     return q%p;
-  }
-  inline double lagrange(vector<pair<int,int> > a,int k){
-    double c=0;
-    for(int i=0;i<a.size();i++){
-      double s1=a[i].nd;
-      for(int j=0;j<a.size();j++)
-        if(i!=j)s1*=1.0*(k-a[j].st)/(a[i].st-a[j].st);
-      c+=s1;
-    }
-    return c;
   }
   inline long double lagrange(vector<pair<ll,ll> > a,ll k){
     long double c=0;
