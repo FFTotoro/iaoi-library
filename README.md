@@ -42,7 +42,7 @@ UPD：增加了带权功能（即维护连通块大小）。
 
 UPD2：增加了获取连通块功能。
 
-- `dsu d(int n)`：创建一个大小为 $n(1\le n\le 10^8)$（如果不添加 `(int n)` 则为默认大小 $2\times 10^5$）的并查集，时间复杂度 $O(n)$（下文 $x,y$ 的范围均为 $0\le x,y<n$）；
+- `dsu d(int n)`：创建一个大小为 $n(1\le n\le 10^8)$ 的并查集，时间复杂度 $O(n)$（下文 $x,y$ 的范围均为 $0\le x,y<n$）；
 - `int d.leader(int x)`：返回 $x$ 的祖先，时间复杂度 $O(\alpha(n))$；
 - `int d.size(int x)`：返回 $x$ 所在连通块（集合）的大小，时间复杂度 $O(\alpha(n))$；
 - `void d.merge(int x,int y)`：合并 $x$ 和 $y$ 所在的连通块（集合），时间复杂度 $O(\alpha(n))$；
