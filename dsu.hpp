@@ -23,5 +23,15 @@ namespace IAOI_lib{
       bool same(int x,int y){
         return leader(x)==leader(y);
       }
+      vector<vector<int> > groups(){
+        vector<int> id(a.size(),-1);
+        int c=0;
+        for(int i=0;i<a.size();i++)
+          if(i==leader(i))id[i]=c++;
+        vector<vector<int> > v(c);
+        for(int i=0;i<a.size();i++)
+          v[id[leader(i)]].emplace_back(i);
+        return v;
+      }
   };
 }
