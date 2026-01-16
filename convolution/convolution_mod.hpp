@@ -45,7 +45,7 @@ namespace IAOI_lib{
   }
   inline poly convolution(poly x,poly y){
     int l=1,n=x.size()+y.size();
-    while(l<n<<1)l<<=1;
+    while(l<n)l<<=1;
     while(x.size()<l)x.emplace_back(0);
     while(y.size()<l)y.emplace_back(0);
     internal::ntt(x,l,1),internal::ntt(y,l,1);
@@ -61,7 +61,7 @@ namespace IAOI_lib{
     return x=convolution(x,y);
   }
   inline poly pow(poly x,ll k){
-    int n=x.size(),l=1;
+    int l=1,n=x.size();
     while(l<n<<1)l<<=1;
     while(x.size()<l)x.emplace_back(0);
     vector<int> r(l); r[0]=1;

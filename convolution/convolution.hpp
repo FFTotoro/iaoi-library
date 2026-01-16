@@ -31,7 +31,7 @@ namespace IAOI_lib{
   }
   inline vector<ll> convolution_ll(vector<int> x,vector<int> y){
     int l=1,n=x.size()+y.size();
-    while(l<n<<1)l<<=1;
+    while(l<n)l<<=1;
     while(x.size()<l)x.emplace_back(0);
     while(y.size()<l)y.emplace_back(0);
     internal::init(l);
