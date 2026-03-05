@@ -5,7 +5,7 @@ namespace IAOI_lib{
   const double PI=acos(-1);
   namespace internal{
     vector<int> t;
-    inline void init(int n){
+    void init(int n){
       int d=n>>1; t.clear();
       t.emplace_back(0),t.emplace_back(d);
       for(int w=2;w<=n;w<<=1){
@@ -14,7 +14,7 @@ namespace IAOI_lib{
           t.emplace_back(t[p]|d);
       }
     }
-    inline void fft(vector<complex<double> > &a,int n){
+    void fft(vector<complex<double> > &a,int n){
       for(int i=1;i<n;i++)
         if(t[i]>i)swap(a[i],a[t[i]]);
       for(int i=2;i<=n;i<<=1){
@@ -29,7 +29,7 @@ namespace IAOI_lib{
       }
     }
   }
-  inline vector<ll> convolution_ll(vector<int> x,vector<int> y){
+  vector<ll> convolution_ll(vector<int> x,vector<int> y){
     int l=1,n=x.size()+y.size();
     while(l<n)l<<=1;
     while(x.size()<l)x.emplace_back(0);

@@ -5,13 +5,13 @@ namespace IAOI_lib{
   typedef vector<int> poly;
   const int g=3,ng=332748118,p=998244353;
   namespace internal{
-    inline int add(int x,int y){
+    int add(int x,int y){
       int s=x+y; if(s>=p)s-=p; return s;
     }
-    inline void self_add(int &x,int y){
+    void self_add(int &x,int y){
       if((x+=y)>=p)x-=p;
     }
-    inline int qpow(int a,int b){
+    int qpow(int a,int b){
       int r=1;
       while(b){
         if(b&1)r=1ll*r*a%p;
@@ -19,7 +19,7 @@ namespace IAOI_lib{
       }
       return r;
     }
-    inline void ntt(poly &a,int l,int op){
+    void ntt(poly &a,int l,int op){
       poly r(l);
       for(int i=1;i<l;i++)
         r[i]=(r[i>>1]>>1)|(i&1?l>>1:0);
@@ -43,7 +43,7 @@ namespace IAOI_lib{
       }
     }
   }
-  inline poly convolution(poly x,poly y){
+  poly convolution(poly x,poly y){
     int l=1,n=x.size()+y.size();
     while(l<n)l<<=1;
     while(x.size()<l)x.emplace_back(0);
@@ -54,13 +54,13 @@ namespace IAOI_lib{
     internal::ntt(x,l,-1);
     return poly(x.begin(),x.begin()+n-1);
   }
-  inline poly operator *(const poly &x,const poly &y){
+  poly operator *(const poly &x,const poly &y){
     return convolution(x,y);
   }
-  inline poly operator *=(poly &x,const poly &y){
+  poly operator *=(poly &x,const poly &y){
     return x=convolution(x,y);
   }
-  inline poly pow(poly x,ll k){
+  poly pow(poly x,ll k){
     int l=1,n=x.size();
     while(l<n<<1)l<<=1;
     while(x.size()<l)x.emplace_back(0);
