@@ -19,7 +19,7 @@ namespace IAOI_lib{
     }
     return p;
   }
-  inline ll safe_mul(ll a,ll b,ll M){
+  ll safe_mul(ll a,ll b,ll M){
     ll r=0;
     while(b){
       if(b&1)(r+=a)%=M;
@@ -27,7 +27,7 @@ namespace IAOI_lib{
     }
     return r;
   }
-  inline int pow_mod(int a,ll b,int M){
+  int pow_mod(int a,ll b,int M){
     int r=1;
     while(b){
       if(b&1)r=1ll*r%M*a%M;
@@ -35,7 +35,7 @@ namespace IAOI_lib{
     }
     return r;
   }
-  inline ll pow_modll(ll a,ll b,ll M){
+  ll pow_modll(ll a,ll b,ll M){
     ll r=1;
     while(b){
       if(b&1)r=(__int128)r%M*a%M;
