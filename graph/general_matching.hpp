@@ -3,6 +3,7 @@ using namespace std;
 namespace IAOI_lib{
   class general_matching{
     private:
+      typedef pair<int,int> pii;
       int n,c;
       vector<vector<int> > g;
       vector<int> o,p,pr,w,f;
@@ -49,10 +50,8 @@ namespace IAOI_lib{
         return false;
       }
     public:
-      general_matching(int n_){
-        c=0,g.resize(n=n_),p.resize(n+1,n);
-        pr.resize(n+1),w.resize(n+1);
-        o.resize(n+1),f.resize(n+1);
+      general_matching(int n)
+        :n(n),c(0),p(n+1,n),pr(n+1),w(n+1),o(n+1),f(n+1){
       }
       void add_edge(int u,int v){
         g[u].emplace_back(v);
