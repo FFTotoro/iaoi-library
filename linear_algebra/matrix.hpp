@@ -2,7 +2,7 @@
 using namespace std;
 namespace IAOI_lib{
   namespace internal{
-    inline int pow_mod(int a,int b,int p){
+    int pow_mod(int a,int b,int p){
       int r=1;
       while(b){
         if(b&1)r=1ll*r*a%p;
@@ -11,14 +11,14 @@ namespace IAOI_lib{
       return r;
     }
   }
-  inline vector<vector<int> > trans(vector<vector<int> > a){
+  vector<vector<int> > trans(vector<vector<int> > a){
     vector b(a[0].size(),vector<int>(a.size()));
     for(int i=0;i<a.size();i++)
       for(int j=0;j<a[0].size();j++)
         b[j][i]=a[i][j];
     return b;
   }
-  inline int rank(vector<vector<int> > a,const int p){
+  int rank(vector<vector<int> > a,const int p){
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
@@ -42,7 +42,7 @@ namespace IAOI_lib{
     }
     return r;
   }
-  inline int det(vector<vector<int> > a,const int p){
+  int det(vector<vector<int> > a,const int p){
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
@@ -64,7 +64,7 @@ namespace IAOI_lib{
     }
     return dt;
   }
-  inline int det_arbitrary_mod(vector<vector<int> > a,const int p){
+  int det_arbitrary_mod(vector<vector<int> > a,const int p){
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
@@ -131,7 +131,7 @@ namespace IAOI_lib{
       }
     return make_pair(c,bs);
   }
-  inline int pfaffian(vector<vector<int> > a,const int p){
+  int pfaffian(vector<vector<int> > a,const int p){
     auto self_add=[&](int &x,int y){
       if((x+=y)>=p)x-=p;
     };
