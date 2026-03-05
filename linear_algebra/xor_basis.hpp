@@ -28,7 +28,7 @@ namespace IAOI_lib{
       }
       T kth_max(T k){
         if(k>=T(1)<<s)return -1;
-        return query_kth_min((T(1)<<s)-k-1);
+        return kth_min((T(1)<<s)-k-1);
       }
       T xor_min(T x){
         for(int i=a.size()-1;~i;i--)
