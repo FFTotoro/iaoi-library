@@ -154,6 +154,10 @@ UPD2：增加了获取连通块功能。
 
 见目录下 `misc/discretization.hpp`。
 
+### 平衡树维护凸包（Line Add Get Min）
+
+见目录下 `misc/line_add_get_min.hpp`。
+
 ## 线性代数（Linear Algebra）
 
 ### 矩阵（Matrix）
