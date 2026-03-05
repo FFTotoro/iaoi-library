@@ -9,8 +9,7 @@ namespace IAOI_lib{
       vector<vector<int> > a;
     public:
       bipar_edge_coloring(int n,int m)
-        :d(n+m),a(n+m,vector<int>(n+m,-1)){
-      }
+        :d(n+m),a(n+m,vector<int>(n+m,-1)){}
       int add_edge(int u,int v){
         d[u]++,d[v]++;
         int c1=0,c2=0;

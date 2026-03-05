@@ -51,8 +51,7 @@ namespace IAOI_lib{
       }
     public:
       general_matching(int n)
-        :n(n),c(0),p(n+1,n),pr(n+1),w(n+1),o(n+1),f(n+1){
-      }
+        :n(n),c(0),p(n+1,n),pr(n+1),w(n+1),o(n+1),f(n+1){}
       void add_edge(int u,int v){
         g[u].emplace_back(v);
         g[v].emplace_back(u);
