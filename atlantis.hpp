@@ -43,8 +43,8 @@ namespace IAOI_lib{
           L[i<<1]=(line){xa,xb,ya,1},L[i<<1|1]=(line){xa,xb,yb,-1};
         }
         sort(L.begin(),L.end(),[](line x,line y){return x.h<y.h;});
-        sort(X.begin(),X.end()),n=unique(X.begin(),X.end())-X.begin();
-        B.resize(n<<2),C.resize(n<<2),S.resize(n<<3),build(1,0,n-2);
+        sort(X.begin(),X.end()),X.erase(unique(X.begin(),X.end()),X.end());
+        n=X.size(),B.resize(n<<2),C.resize(n<<2),S.resize(n<<3),build(1,0,n-2);
         int c=0;
         for(int i=0;i+1<a.size()<<1;i++){
           update(1,L[i].l,L[i].r,L[i].s);
