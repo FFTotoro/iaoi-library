@@ -204,8 +204,6 @@ UPD2：增加了获取连通块功能。
 
 见目录下 `convolution/convolution_mod.hpp`。
 
-**注意：使用 `pow` 函数时需要保证 $x_0=1$。**
-
 ### 按位与 / 或 / 异或卷积取模（Bitwise AND / OR / XOR Convolution Mod $998244353$）
 
 见目录下 `convolution/bitwise_convolution.hpp`。
