@@ -59,7 +59,7 @@ UPD2：增加了获取连通块功能。
 
 #### 功能介绍
 
-- `sparse_table<T,op> s(vector<T> a)`：对于存储 `T` 类型的 $a$ 数组（`std::vector`）创建一个 ST 表，`op` 为你需要维护的操作（特别地，它需要满足**消去律** $\mathrm{op}(x,x)=x$；例如 $\mathrm{gcd}$ / $\max$ / $\mathrm{and}$ 等都满足消去律），时间复杂度 $O(n\log n)$，这里 $n(1\le n\le 10^7)$ 为 $a$ 的大小；
+- `sparse_table<T,op> s(vector<T> a)`：对于存储 `T` 类型的 $a$ 数组（`std::vector`）创建一个 ST 表，`op` 为你需要维护的操作（特别地，它需要满足**幂等性** $\mathrm{op}(x,x)=x$；例如 $\mathrm{gcd}$ / $\max$ / $\mathrm{and}$ 等都满足幂等性），时间复杂度 $O(n\log n)$，这里 $n(1\le n\le 10^7)$ 为 $a$ 的大小；
 - `T s.query(int l,int r)`：返回 $\mathrm{op}_{i=l}^r a_i$ 的值，时间复杂度 $O(1)$。
 
 #### 示例代码
