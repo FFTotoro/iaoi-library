@@ -13,7 +13,7 @@ namespace IAOI_lib{
       vector<int> sa(n),rk=s;
       iota(sa.begin(),sa.end(),0);
       int v=*max_element(rk.begin(),rk.end())+1;
-      for(int k=1;k<n&&v<n;k<<=1){
+      for(int k=1;k<n&&v<=n;k<<=1){
         auto cmp=[&](int x,int y){
           if(rk[x]!=rk[y])return rk[x]<rk[y];
           int rx=x+k<n?rk[x+k]:-1,ry=y+k<n?rk[y+k]:-1;
